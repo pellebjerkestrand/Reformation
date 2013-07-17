@@ -1,8 +1,10 @@
 
-.idea/.name
+*.idea
+
+*.name
 
 *.iml
 
 *.xml
 
-example.html
+*.html
