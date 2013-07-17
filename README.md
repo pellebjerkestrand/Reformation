@@ -33,13 +33,17 @@ Options is optional. Defaults are as follows:
 HTML
 ----
 
-Reformation wants your HTML to be structured like this
+Reformation wants your HTML to be structured like this.
 
 ```html
 <div class="viewport">
   <div class="gallery">
-    <div class="slide"></div>
+    <div class="slide">
+      <div class="content"></div>
+    </div>
   </div>
   <div class="controls></div>
 </div>
 ```
+
+Divitis is uncool, but used here just to illustrate structure. Please use semantic elements if possible.
