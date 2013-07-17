@@ -55,7 +55,7 @@ Reformation wants your HTML to be structured like this.
       </div>
     </div>
   </div>
-  <div class="controls>
+  <div class="controls">
     <button class="control prev">prev</button>
     <button class="control next">next</button>
   </div>
