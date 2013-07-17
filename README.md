@@ -50,10 +50,15 @@ Reformation wants your HTML to be structured like this.
 <div class="viewport">
   <div class="gallery">
     <div class="slide">
-      <div class="content"></div>
+      <div class="content">
+        <!-- Slide content goes in here -->
+      </div>
     </div>
   </div>
-  <div class="controls></div>
+  <div class="controls>
+    <button class="control prev">prev</button>
+    <button class="control next">next</button>
+  </div>
 </div>
 ```
 
