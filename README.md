@@ -14,6 +14,7 @@ Options
 
 Options is optional. Defaults are as follows:
 
+```javascript
 {
   gallery: '.gallery',
   slide: '.slide',
@@ -27,6 +28,7 @@ Options is optional. Defaults are as follows:
   onNext: function(){},
   onPrev: function(){}
 }
+```
 
 HTML
 ----
@@ -34,6 +36,6 @@ HTML
 Reformation wants your HTML to be structured like this
 
 * viewport
-  ** gallery
-    *** slide
-  ** controls
+  * gallery
+    * slide
+  * controls
