@@ -30,6 +30,17 @@ Options is optional. Defaults are as follows:
 }
 ```
 
+Callbacks
+---------
+
+All the callbacks are passed the current slide and the current slide's index like so:
+
+```javascript
+onLoad($currentSlide, currentIndex);
+```
+
+Their names are self explanatory (I hope).
+
 HTML
 ----
 
