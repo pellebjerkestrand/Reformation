@@ -35,7 +35,11 @@ HTML
 
 Reformation wants your HTML to be structured like this
 
-* viewport
-  * gallery
-    * slide
-  * controls
+```html
+<div class="viewport">
+  <div class="gallery">
+    <div class="slide"></div>
+  </div>
+  <div class="controls></div>
+</div>
+```
