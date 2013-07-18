@@ -6,13 +6,12 @@ Simple responsive jQuery content gallery
 Usage
 -----
 
+```javascript
 $('.viewport').reform([options]);
+```
 
-
-Options
--------
-
-Options is optional. Defaults are as follows:
+Default Options
+---------------
 
 ```javascript
 {
