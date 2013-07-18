@@ -3,7 +3,8 @@
  *  Simple responsive image gallery plugin
  *  Named after Kiuas' Reformation - http://en.wikipedia.org/wiki/Reformation_(Kiuas_album)
  *
- *  Copyright 2013 Pelle Bjerkestrand - http://pellebjerkestrand.net/
+ *  By Pelle Bjerkestrand - http://pellebjerkestrand.net/
+ *  License: UNLICENSE - http://unlicense.org/
  */
 
 ;(function($){
