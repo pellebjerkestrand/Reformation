@@ -48,8 +48,6 @@ onNext($currentSlide, currentIndex);    // Called before switching to next slide
 onPrev($currentSlide, currentIndex);    // Called before switching to previous slide
 ```
 
-Their names are self explanatory (I hope).
-
 HTML
 ----
 
