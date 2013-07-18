@@ -1,7 +1,7 @@
 Reformation
 ===========
 
-Simple responsive jQuery content gallery
+Simple responsive jQuery content gallery that centers the content and crops it equally either top/bottom or left/right based on the wanted display ratio.
 
 Usage
 -----
