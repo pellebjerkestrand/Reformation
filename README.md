@@ -21,7 +21,10 @@ Options is optional. Defaults are as follows:
   next: '.next',
   prev: '.prev',
   ratio: 1,
+  enableControls: true,
   controls: '.controls',
+  auto: false,
+  speed: 6000,
   onLoad: function(){},
   onBefore: function(){},
   onAfter: function(){},
@@ -63,3 +66,16 @@ Reformation wants your HTML to be structured like this.
 ```
 
 Divitis is uncool, but used here just to illustrate structure. Please use semantic elements if possible.
+
+Public Functions
+----------------
+
+```javascript
+var reformed = $(viewport).reform();
+
+reformed.next();    // Shows the next slide
+reformed.prev();    // Shows the previous slide
+reformed.show(3);   // Shows the slide number matching the index provided
+reformed.current(); // Returns the current index
+reformed.slide(3);  // Returns the slide object matching the index provided
+```

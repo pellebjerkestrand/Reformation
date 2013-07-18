@@ -7,6 +7,8 @@
  */
 
 ;(function($){
+    'use strict';
+
     $.fn.reform = function(options){
         if(this.length === 0) {
             return this;
@@ -38,6 +40,7 @@
 
             // Auto
             auto: false,
+            speed: 6000,
 
             // Callbacks
             onLoad: function(){},
@@ -59,18 +62,31 @@
                 contents: null
             },
             current: 0,
+            clickNext: function(){
+                if(app.autoInterval){
+                    clearInterval(app.autoInterval);
+                }
+                app.next();
+            },
+            clickPrev: function(){
+                if(app.autoInterval){
+                    clearInterval(app.autoInterval);
+                }
+                app.prev();
+            },
             next: function(){
-                app.settings.onNext(app.slides.eq(app.current), app.current);
+                app.settings.onNext(app.elements.slides.eq(app.current), app.current);
                 var next = app.current + 1;
                 app.show(next >= app.elements.slides.length ? 0 : next);
             },
             prev: function(){
-                app.settings.onPrev(app.slides.eq(app.current), app.current);
+                app.settings.onPrev(app.elements.slides.eq(app.current), app.current);
                 var prev = app.current - 1;
                 app.show(prev <= -1 ? app.elements.slides.length - 1 : prev);
             },
             show: function(index){
-                app.settings.onBefore(app.slides.eq(app.current), app.current);
+                app.settings.onBefore(app.elements.slides.eq(app.current), app.current);
+
                 var $target = app.elements.slides.eq(index).css({
                     opacity: 1,
                     'z-index': 2
@@ -83,7 +99,7 @@
 
                 app.current = index;
 
-                app.settings.onAfter(app.slides.eq(app.current), app.current);
+                app.settings.onAfter(app.elements.slides.eq(app.current), app.current);
             },
             centerContent: function(){
                 var windowH = app.elements.gallery.height(),
@@ -122,7 +138,7 @@
                     padding: 0,
                     position: 'absolute',
                     top: 0,
-                    transition: 'opacity .75s ease-in-out'
+                    transition: 'opacity 1.5s ease-in-out'
                 });
 
                 app.elements.viewport.css({
@@ -139,6 +155,29 @@
                     top: 0
                 });
             },
+            bindControls: function(){
+                if(app.settings.enableControls){
+                    app.elements.controls = app.elements.viewport.find(app.settings.controls);
+
+                    app.elements.controls.find(app.settings.next).off('click').on('click', function(e){
+                        app.clickNext();
+                        e.preventDefault();
+                    });
+
+                    app.elements.controls.find(app.settings.prev).off('click').on('click', function(e){
+                        app.clickPrev();
+                        e.preventDefault();
+                    });
+                }
+            },
+            startAuto: function(){
+                if(app.settings.auto && !app.autoInterval) {
+                    app.autoInterval = setInterval(function(){
+                        app.next();
+                    }, app.settings.speed);
+                }
+            },
+            autoInterval: null,
             init: function(){
                 if(!app.elements.slides){
                     $.extend(app.settings, defaults, options);
@@ -146,30 +185,19 @@
                     app.elements.viewport = $this;
                     app.elements.gallery = app.elements.viewport.find(app.settings.gallery);
                     app.elements.slides = app.elements.viewport.find(app.settings.slide);
-                    app.elements.controls = app.elements.viewport.find(app.settings.controls);
                     app.elements.contents = app.elements.slides.children();
 
+                    app.bindControls();
                     app.setInitialStyles();
-
                     app.show(app.current);
-
-                    app.elements.controls.find(app.settings.next).off('click').on('click', function(e){
-                        app.next();
-                        e.preventDefault();
-                    });
-
-                    app.elements.controls.find(app.settings.prev).off('click').on('click', function(e){
-                        app.prev();
-                        e.preventDefault();
-                    });
-
                     app.centerContent();
+                    app.startAuto();
 
-                    $(window).resize(function(){
+                    $(window).bind('resize', function(){
                         app.centerContent();
                     });
 
-                    app.settings.onLoad(app.slides.eq(app.current), app.current);
+                    app.settings.onLoad(app.elements.slides.eq(app.current), app.current);
                 }
             }
         };
@@ -184,6 +212,14 @@
 
         $this.show = function(index){
             app.show(index);
+        };
+
+        $this.current = function(){
+            return app.current;
+        };
+
+        $this.slide = function(index){
+            return app.slides.eq(index);
         };
 
         app.init();
