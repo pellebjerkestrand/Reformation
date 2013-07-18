@@ -20,6 +20,8 @@ Options is optional. Defaults are as follows:
   slide: '.slide',
   next: '.next',
   prev: '.prev',
+  title: '.title',
+  desc: '.desc',
   ratio: 1,
   enableControls: true,
   controls: '.controls',
@@ -39,7 +41,11 @@ Callbacks
 All the callbacks are passed the current slide and the current slide's index like so:
 
 ```javascript
-onLoad($currentSlide, currentIndex);
+onLoad($currentSlide, currentIndex);    // Called after the initialization is finished
+onBefore($currentSlide, currentIndex);  // Called before each slide switch
+onAfter($currentSlide, currentIndex);   // Called after each slide switch
+onNext($currentSlide, currentIndex);    // Called before switching to next slide
+onPrev($currentSlide, currentIndex);    // Called before switching to previous slide
 ```
 
 Their names are self explanatory (I hope).
@@ -58,8 +64,11 @@ Reformation wants your HTML to be structured like this.
       </div>
     </div>
   </div>
+  <!-- Controls are optional -->
   <div class="controls">
     <button class="control prev">prev</button>
+    <h1 class="title"></h1> <!-- Title is optional -->
+    <h2 class="desc"></h2> <!-- Description is optional -->
     <button class="control next">next</button>
   </div>
 </div>

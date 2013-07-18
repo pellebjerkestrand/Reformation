@@ -30,6 +30,8 @@
             slide: '.slide',
             next: '.next',
             prev: '.prev',
+            title: '.title',
+            desc: '.desc',
 
             // Variables
             ratio: 1,
@@ -59,6 +61,8 @@
                 gallery: null,
                 slides: null,
                 controls: null,
+                title: null,
+                desc: null,
                 contents: null
             },
             current: 0,
@@ -100,6 +104,8 @@
                 app.current = index;
 
                 app.settings.onAfter(app.elements.slides.eq(app.current), app.current);
+
+                app.updateInfo($target);
             },
             centerContent: function(){
                 var windowH = app.elements.gallery.height(),
@@ -168,6 +174,9 @@
                         app.clickPrev();
                         e.preventDefault();
                     });
+
+                    app.elements.title = app.elements.viewport.find(app.settings.title);
+                    app.elements.desc = app.elements.viewport.find(app.settings.desc);
                 }
             },
             startAuto: function(){
@@ -178,6 +187,12 @@
                 }
             },
             autoInterval: null,
+            updateInfo: function($slide){
+                if(app.settings.enableControls){
+                    app.elements.title.text($slide.data('reformation-title') || '');
+                    app.elements.desc.text($slide.data('reformation-desc') || '');
+                }
+            },
             init: function(){
                 if(!app.elements.slides){
                     $.extend(app.settings, defaults, options);
