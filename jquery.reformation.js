@@ -1,5 +1,5 @@
 /**
- *  jQuery Reformation v0.1
+ *  jQuery Reformation v0.2
  *  Simple responsive image gallery plugin
  *  Named after Kiuas' Reformation - http://en.wikipedia.org/wiki/Reformation_(Kiuas_album)
  *
@@ -114,7 +114,13 @@
                     windowR = windowW / windowH;
 
                 if(windowR === app.settings.ratio){
-                    //No op: image is a perfect fit
+                    //Content is a perfect fit
+                    app.elements.contents.css({
+                        'margin-top': 0,
+                        'margin-left': 0,
+                        height: windowH,
+                        width: windowW
+                    });
                 } else if(windowR < app.settings.ratio){
                     //Content is shorter than window
                     var widthToSet = windowH * app.settings.ratio;
