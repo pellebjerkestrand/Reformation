@@ -199,6 +199,12 @@
                     app.elements.title.text($slide.data('reformation-title') || '');
                     app.elements.desc.text($slide.data('reformation-desc') || '');
                 }
+
+                if($slide.data('reformation-alternate')){
+                    app.elements.viewport.addClass('alternate');
+                } else {
+                    app.elements.viewport.removeClass('alternate');
+                }
             },
             init: function(){
                 if(!app.elements.slides){
