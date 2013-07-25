@@ -78,6 +78,12 @@ Divitis is uncool, but used here just to illustrate structure. Please use semant
 Data Attributes
 ---------------
 
+These will be used if present on a slide.
+
+```javascript
+[data-reformation-alternate]    // Add 'alternate' as a class to the slide
+```
+
 These will be used if present on a slide element and enableControls is true.
 
 ```javascript
