@@ -184,9 +184,14 @@
                         e.preventDefault();
                     });
 
+                    app.elements.url = app.elements.viewport.find(app.settings.url).off('click').on('click', function(e){
+                        if(this.getAttribute('href') === '#'){
+                            e.preventDefault();
+                        }
+                    });
+
                     app.elements.title = app.elements.viewport.find(app.settings.title);
                     app.elements.desc = app.elements.viewport.find(app.settings.desc);
-                    app.elements.url = app.elements.viewport.find(app.settings.url);
                 }
             },
             startAuto: function(){
@@ -201,14 +206,7 @@
                 if(app.settings.enableControls){
                     app.elements.title.text($slide.data('reformation-title') || '');
                     app.elements.desc.text($slide.data('reformation-desc') || '');
-
-                    var url = $slide.data('reformation-url');
-                    app.elements.url.attr('href', url).off('click').on('click', function(event){
-                        if(!url){
-                            app.next();
-                            event.preventDefault();
-                        }
-                    });
+                    app.elements.url.attr('href', $slide.data('reformation-url') || '#');
                 }
 
                 if($slide.data('reformation-alternate')){
