@@ -64,14 +64,27 @@ Reformation wants your HTML to be structured like this.
   <!-- Controls are optional -->
   <div class="controls">
     <button class="control prev">prev</button>
-    <h1 class="title"></h1> <!-- Title is optional -->
-    <h2 class="desc"></h2> <!-- Description is optional -->
+    <a class="url"> <!-- URL is optional -->
+      <h1 class="title"></h1> <!-- Title is optional -->
+      <h2 class="desc"></h2> <!-- Description is optional -->
+    </a>
     <button class="control next">next</button>
   </div>
 </div>
 ```
 
 Divitis is uncool, but used here just to illustrate structure. Please use semantic elements if possible.
+
+Data Attributes
+---------------
+
+These will be used if present on a slide element and enableControls is true.
+
+```javascript
+[data-reformation-url]          // URL to whatever you want
+[data-reformation-title]        // The title of the slide
+[data-reformation-description]  // The slide's description
+```
 
 Public Functions
 ----------------
