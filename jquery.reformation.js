@@ -68,6 +68,10 @@
                 url: null,
                 contents: null
             },
+            states: {
+                controls: 'controls',
+                noControls: 'no-controls'
+            },
             current: 0,
             clickNext: function(){
                 if(app.autoInterval){
@@ -192,6 +196,10 @@
 
                     app.elements.title = app.elements.viewport.find(app.settings.title);
                     app.elements.desc = app.elements.viewport.find(app.settings.desc);
+
+                    app.elements.viewport.addClass(app.states.controls);
+                } else {
+                    app.elements.viewport.addClass(app.states.noControls);
                 }
             },
             startAuto: function(){
