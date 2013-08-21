@@ -204,7 +204,7 @@
                 }
             },
             hideControls: function(){
-                app.elements.controls.find(app.settings.next + ', ' + app.settings.previous).addClass(app.states.hidden);
+                app.elements.controls.find(app.settings.next + ', ' + app.settings.prev).addClass(app.states.hidden);
             },
             startAuto: function(){
                 if(app.settings.auto && !app.autoInterval) {
