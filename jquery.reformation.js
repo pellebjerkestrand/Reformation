@@ -70,7 +70,8 @@
             },
             states: {
                 controls: 'controls',
-                noControls: 'no-controls'
+                noControls: 'no-controls',
+                hidden: 'hidden'
             },
             current: 0,
             clickNext: function(){
@@ -202,6 +203,9 @@
                     app.elements.viewport.addClass(app.states.noControls);
                 }
             },
+            hideControls: function(){
+                app.elements.controls.find(app.settings.next + ', ' + app.settings.previous).addClass(app.states.hidden);
+            },
             startAuto: function(){
                 if(app.settings.auto && !app.autoInterval) {
                     app.autoInterval = setInterval(function(){
@@ -236,7 +240,12 @@
                     app.setInitialStyles();
                     app.show(app.current);
                     app.centerContent();
-                    app.startAuto();
+
+                    if(app.elements.slides.length > 1){
+                        app.startAuto();
+                    } else {
+                        app.hideControls();
+                    }
 
                     $(window).bind('resize', function(){
                         app.centerContent();
